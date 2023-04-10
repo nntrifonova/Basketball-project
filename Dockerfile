@@ -1,4 +1,4 @@
 FROM php:8.0-cli
-COPY . /usr/src/myapp
-WORKDIR /usr/src/myapp
-CMD [ "php", "./your-script.php" ]
+WORKDIR /var/www/html
+COPY . .
+EXPOSE 80
