@@ -1,4 +1,4 @@
 FROM php:8.0-cli
 WORKDIR /var/www/html
-COPY . .
+COPY .. .
 EXPOSE 80
