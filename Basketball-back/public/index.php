@@ -1,41 +1,10 @@
 <?php
 
-/*
- * Front Controller
- * (single entry point for all requests)
- */
+//phpinfo();
 
-define('ROOT', dirname(__FILE__, 2));
-define('IS_CONSOLE', in_array(PHP_SAPI, ['cli', 'phpdbg'], true));
-
-
-// Enable display all errors
-ini_set('display_errors', 1);
-ini_set('display_startup_errors', 1);
-ini_set('error_reporting', E_ALL);
-error_reporting(E_ALL);
-
-// Safety get $_SERVER['REQUEST_URI']
-$_requestUri = _getRequestUri();
-
-// Get part before GET-params in URI.
-// Example: get "/page" from "/page?p1=v1&p2=v2"
-$_requestUri = strtok($_requestUri, '?');
-
-$_routes = require ROOT . '/config/routes.php';
-
-if (isset($_routes[$_requestUri])) {
-    require_once ROOT . '/' . $_routes[$_requestUri];
-} else {
-    $_code = 404;
-    http_response_code($_code);
-    die("Error $_code");
+$link = mysqli_connect('mysql', 'admin', 'pass');
+if (!$link) {
+    die('Ошибка соединения: ' . mysqli_error());
 }
-
-function _getRequestUri()
-{
-    $input = filter_input(INPUT_SERVER, 'REQUEST_URI', FILTER_SANITIZE_STRING);
-    $input = htmlentities(strip_tags($input));
-
-    return trim($input);
-}
+echo 'Успешно соединились';
+mysqli_close($link);
