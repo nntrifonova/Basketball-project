@@ -1,10 +1,18 @@
 <?php
-class Posts
+
+namespace App\Models;
+
+use Core\Repo;
+
+class Posts extends Repo
 {
-    // Post Properties
-    public $id;
-    public $title;
-    public $text;
-    public $image;
-    public $date;
+    // Table name.
+    protected $tableName = 'Posts';
+
+    // Primary key.
+    protected $primaryKey = 'posts_id';
+
+    // The attributes that are mass assignable.
+    protected $fillable = ['title', 'text', 'image', 'date'];
+
 }
