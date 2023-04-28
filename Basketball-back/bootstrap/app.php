@@ -24,7 +24,7 @@ require  '/home/test/PhpstormProjects/Basketball_proj/vendor/autoload.php';
 |
 */
 
-$app = new Core\Application(dirname(__DIR__)); //TO CHANGE
+$app = new Core\Application(dirname('/home/test/PhpstormProjects/Basketball_proj/Basketball-back/core'));
 
 /*
 |--------------------------------------------------------------------------

@@ -4,7 +4,7 @@
 <?php
 
 use Core\Router;
-use App\Controllers\UserController;
+use app\Controllers\MainPageController;
 
 /*
 |--------------------------------------------------------------------------
@@ -16,8 +16,8 @@ use App\Controllers\UserController;
 |
 */
 
-$router = new Router();
-$userController = new UserController();
+$router = new Router('/home/test/PhpstormProjects/Basketball_proj/Basketball-back/app/');
+$userController = new MainPageController();
 
 // Users
 $router->respond('GET', '/users', function () use ($userController) {
