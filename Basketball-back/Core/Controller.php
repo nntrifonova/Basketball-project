@@ -2,7 +2,7 @@
 
 namespace Core;
 
-class BaseController
+class Controller
 {
     public $request;
 

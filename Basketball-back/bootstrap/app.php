@@ -12,7 +12,7 @@
 |
 */
 
-require  '/home/test/PhpstormProjects/Basketball_proj/vendor/autoload.php';
+//require '../autoload.php';
 
 /*
 |--------------------------------------------------------------------------
@@ -24,7 +24,8 @@ require  '/home/test/PhpstormProjects/Basketball_proj/vendor/autoload.php';
 |
 */
 
-$app = new Core\Application(dirname('/home/test/PhpstormProjects/Basketball_proj/Basketball-back/core'));
+//new Core\Application(dirname('Core/Application.php',1));
+$app = new Core\Application(dirname('Core/Application.php',1));
 
 /*
 |--------------------------------------------------------------------------
@@ -36,6 +37,6 @@ $app = new Core\Application(dirname('/home/test/PhpstormProjects/Basketball_proj
 |
 */
 
-require '/home/test/PhpstormProjects/Basketball_proj/Basketball-back/routes/routes.php';
+require '../routes/routes.php';
 
 return $app;

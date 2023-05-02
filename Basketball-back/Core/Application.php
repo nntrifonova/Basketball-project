@@ -1,10 +1,6 @@
 <?php
 
 namespace Core;
-
-use Throwable;
-use ErrorException;
-
 class Application
 {
     /**
@@ -12,16 +8,17 @@ class Application
      *
      * @var string
      */
-    protected $basePath;
+    protected string $basePath;
 
     /**
      * Create a new application instance.
      *
-     * @param  string|null  $basePath
+     * @param string|null $basePath
      * @return void
      */
-    public function __construct($basePath = null)
+    public function __construct(string $basePath)
     {
+        $this->basePath = realpath(getcwd(). '/../');
         $this->basePath = $basePath;
 
     }

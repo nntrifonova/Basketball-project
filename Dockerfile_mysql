@@ -10,9 +10,9 @@ ENV MYSQL_DATABASE=$MYSQL_DATABASE
 ENV MYSQL_ROOT_PASSWORD=$MYSQL_ROOT_PASSWORD
 
 
-ADD ./Basketball-back/database/migrations/init-tables.sql /etc/mysql/data.sql
+ADD Basketball-back/Database/migrations/init-tables.sql /etc/mysql/data.sql
 
 RUN sed -i 's/MYSQL_DATABASE/'$MYSQL_DATABASE'/g' /etc/mysql/data.sql
-ADD  ./Basketball-back/database/migrations/init-tables.sql /docker-entrypoint-initdb.d
+ADD  Basketball-back/Database/migrations/init-tables.sql /docker-entrypoint-initdb.d
 
 EXPOSE 3306

@@ -37,6 +37,6 @@ services:
     ports:
       - "${MYSQL_PORT}:3306"
     volumes:
-      - ./Basketball-back/database:/docker-entrypoint-initdb.d:ro
+      - ./Basketball-back/Database:/docker-entrypoint-initdb.d:ro
 
 

@@ -2,7 +2,7 @@
 
 namespace App\Controllers;
 
-class UserController extends Controller
+class MainPageController extends Controller
 {
     private $model;
 

@@ -8,7 +8,7 @@ class Repo
     public $db;
     protected $primaryKey = 'id';
 
-    // Constructor with $db as database connection.
+    // Constructor with $db as Database connection.
     public function __construct()
     {
         $db = new Database();

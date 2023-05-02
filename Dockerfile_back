@@ -1,28 +1,38 @@
-FROM php:latest
+FROM ubuntu:latest
 ENV DEBIAN_FRONTEND=noninteractive
 RUN apt-get update -y
 RUN apt-get upgrade -y
 RUN apt-get install -y apache2
+RUN apt-get install -y php
+RUN apt-get install -y php-dev
+RUN apt-get install -y php-mysql
+RUN apt-get install -y libapache2-mod-php
+RUN apt-get install -y php-curl
+RUN apt-get install -y php-json
+RUN apt-get install -y php-common
+RUN apt-get install -y php-mbstring
+RUN apt-get install -y php-mysql
+RUN apt-get install -y php-xdebug
 
 
-RUN docker-php-ext-install pdo pdo_mysql
 
+RUN echo "xdebug.mode=debug" >>              /etc/php/8.1/apache2/conf.d/20-xdebug.ini
+RUN echo "xdebug.log=/var/log/xdebug" >>     /etc/php/8.1/apache2/conf.d/20-xdebug.ini
+RUN echo "xdebug.idekey=PHPSTORM" >>         /etc/php/8.1/apache2/conf.d/20-xdebug.ini
+RUN echo "xdebug.client_host = 172.18.0.1">> /etc/php/8.1/apache2/conf.d/20-xdebug.ini
 
-RUN yes | pecl install xdebug \
-    && echo "zend_extension=$(find /usr/local/lib/php/extensions/ -name xdebug.so)" > /usr/local/etc/php/conf.d/xdebug.ini \
-    && echo "xdebug.remote_enable=on" >> /usr/local/etc/php/conf.d/xdebug.ini \
-    && echo "xdebug.remote_autostart=off" >> /usr/local/etc/php/conf.d/xdebug.ini
+RUN docker-php-ext-install mysql mysqli pdo pdo_mysql
 
 COPY ./configs/back/apache.conf /etc/apache2/sites-available/
 
 
 CMD ["apachectl","-D","FOREGROUND"]
 
-RUN echo 'ServerName  127.0.0.1' >> /etc/apache2/apache2.conf
+#RUN echo 'ServerName  127.0.0.1' >> /etc/apache2/apache2.conf
+RUN a2dissite 000-default
 RUN a2ensite apache
 
 RUN a2enmod expires
 RUN a2enmod rewrite
-
-EXPOSE 80
+EXPOSE 8080
 EXPOSE 443

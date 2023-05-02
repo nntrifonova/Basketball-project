@@ -2,7 +2,7 @@
 
 namespace Core;
 
-use Core\IRequest;
+use Request;
 
 class Router
 {
