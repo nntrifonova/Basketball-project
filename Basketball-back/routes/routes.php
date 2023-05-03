@@ -1,7 +1,7 @@
 <?php
 
-use Core\Router;
-use App\Controllers\MainPageController;
+use Server\MainPageController;
+use Server\Router;
 
 /*
 |--------------------------------------------------------------------------
@@ -14,21 +14,21 @@ use App\Controllers\MainPageController;
 */
 
 $router = new Router('../App/');
-$userController = new MainPageController();
+$mainPageController = new MainPageController();
 
 // Users
-$router->respond('GET', '/users', function () use ($userController) {
-    echo $userController->getAll();
+$router->respond('GET', '/main', function () use ($mainPageController) {
+    echo $mainPageController->getAll();
 });
-$router->respond('GET', '/users/(int:id)', function ($id) use ($userController) {
-    echo $userController->getById($id);
+$router->respond('GET', '/main/(int:id)', function ($id) use ($mainPageController) {
+    echo $mainPageController->getById($id);
 });
-$router->respond('POST', '/users', function () use ($userController) {
-    echo $userController->create();
+$router->respond('POST', '/main', function () use ($mainPageController) {
+    echo $mainPageController->create();
 });
-$router->respond('PUT', '/users/(int:id)', function ($id) use ($userController) {
-    echo $userController->update($id);
+$router->respond('PUT', '/main/(int:id)', function ($id) use ($mainPageController) {
+    echo $mainPageController->update($id);
 });
-$router->respond('DELETE', '/users/(int:id)', function ($id) use ($userController) {
-    echo $userController->delete($id);
+$router->respond('DELETE', '/main/(int:id)', function ($id) use ($mainPageController) {
+    echo $mainPageController->delete($id);
 });

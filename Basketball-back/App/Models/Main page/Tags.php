@@ -1,6 +1,6 @@
 <?php
-namespace App\Models;
-use Core\Repo;
+namespace Server;
+use Repo;
 
 class Tags extends  Repo {
     // Table name.

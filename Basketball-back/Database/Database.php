@@ -1,6 +1,6 @@
 <?php
 
-namespace Database;
+namespace Server;
 class Database
 {
     private $host = "localhost";

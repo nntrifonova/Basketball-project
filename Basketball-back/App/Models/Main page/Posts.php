@@ -1,8 +1,8 @@
 <?php
 
-namespace App\Models;
+namespace Server\App;
 
-use Core\Repo;
+use Server\Repo;
 
 class Posts extends Repo
 {

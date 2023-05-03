@@ -1,4 +1,5 @@
 <?php
+use Server\Application;
 
 /*
 |--------------------------------------------------------------------------
@@ -25,7 +26,7 @@
 */
 
 //new Core\Application(dirname('Core/Application.php',1));
-$app = new Core\Application(dirname('Core/Application.php',1));
+$app = new Application(dirname('Core/Application.php',1));
 
 /*
 |--------------------------------------------------------------------------

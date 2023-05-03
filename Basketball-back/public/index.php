@@ -8,11 +8,10 @@ require  '../autoload.php';
 // Define base dir
 define('BASE_DIR', str_replace('/public', '', __DIR__));
 
-$autoload = new Autoload();
-$autoload->register();
-$autoload->addNamespace('\Core', '../Core');
-$autoload->addNamespace('\App', '../App');
+//$autoload = new Autoload();
+//$autoload->register();
 
-var_dump($autoload);
+
+//var_dump($autoload);
 // Start App
 require_once '../bootstrap/app.php';
