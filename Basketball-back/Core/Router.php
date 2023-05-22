@@ -6,7 +6,7 @@ use Request;
 
 class Router
 {
-    protected $basePath;
+    public $basePath;
     protected $requestUri;
     protected $requestMethod;
     protected $httpMethods = array('get', 'post', 'put', 'patch', 'delete');

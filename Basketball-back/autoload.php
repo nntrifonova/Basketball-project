@@ -3,9 +3,7 @@
 spl_autoload_register(function ($className) {
     $directories = [
         'App\Http\Controllers',
-        'App',
-        'Http',
-       'Controllers',
+        'App\Models\Main page',
         'Core',
         'Database',
         'Routes',
@@ -23,15 +21,3 @@ spl_autoload_register(function ($className) {
         }
     }
 });
-
-//Listen 8080
-//<VirtualHost *:8080>
-//DocumentRoot "/var/www/html/public/"
-//<Directory /var/www/html/public/>
-//                DirectoryIndex index.php
-//                Options Indexes FollowSymLinks
-//                AllowOverride All
-//                Require all granted
-//</Directory>
-//
-//</VirtualHost>

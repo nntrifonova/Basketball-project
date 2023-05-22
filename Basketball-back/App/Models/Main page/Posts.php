@@ -1,6 +1,6 @@
 <?php
 
-namespace Server\App;
+namespace Server;
 
 use Server\Repo;
 
