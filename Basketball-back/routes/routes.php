@@ -4,19 +4,56 @@ use Server\MainPageController;
 use Server\Router;
 
 Class Routes {
-    public $routes = ['/main' => ['className' => 'MainPageController', 'methodName' => ['getAll', 'create'], 'method' => ['GET', 'POST']],
-    '/main(int:id)' => ['className' => 'MainPageController', 'methodName' => ['getById', 'delete', 'update'], 'method' => ['GET', 'DELETE', 'PUT']],];
 
+    public $router;
+    public $mainPageController;
+
+    public $routes= ['uri' => ['/main', '/main(int:id)'], 'className' => 'mainPageController',
+        'methodType' => ['GET','POST', 'DELETE', 'PUT'], 'methodName' => ['getAll', 'create', 'getById', 'delete', 'update']];
+
+    public function __construct()
+    {
+        $this->router = new Router('../App');
+        $this->mainPageController = new MainPageController();
+    }
+
+    public function argumentsForMatcher($routes, $router){
+        $method = $this->router.determineHttpMethod();
+
+        if( in_array($method, $this->routes['methodType'])){            //Возможно это лишняя проверка
+            return $this->router.matcher($method, );
+
+        }
+        switch ($i) {
+            case 0:
+                switch ($i) {
+                    case 0:
+                        echo $this->mainPageController->getAll();
+                        break;
+                    case 1:
+                        echo $this->mainPageController->create();
+                        break;
+                }
+                break;
+            case 1:
+                switch ($i) {
+                    case 0:
+                        echo $this->mainPageController->getById($id);
+                        break;
+                    case 1:
+                        echo $this->mainPageController->delete($id);
+                        break;
+                    case 2:
+                        echo $this->mainPageController->update($id);
+                        break;
+                }
+                break;
+        }
+
+    }
 
 
 }
-
-//$routes = ['/main' => ['className' => 'MainPageController', 'methodName' => ['getAll', 'create'], 'method' => ['GET', 'POST']],
-//    '/main(int:id)' => ['className' => 'MainPageController', 'methodName' => ['getById', 'delete', 'update'], 'method' => ['GET', 'DELETE', 'PUT']],];
-//
-/////     $router = new Router('../App');
-//        $mainPageController = new MainPageController();
-//
 
 //$router->respond('GET', '/main', function () use ($mainPageController) {
 //    echo $mainPageController->getAll();

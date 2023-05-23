@@ -20,7 +20,7 @@ class Router
         $this->requestMethod = $this->determineHttpMethod();
     }
 
-    private function determineHttpMethod()
+    public function determineHttpMethod()
     {
         $method = strtolower($_SERVER['REQUEST_METHOD']);
 
@@ -31,7 +31,7 @@ class Router
         return 'get';
     }
 
-    public function respond($method, $route, $callable)
+    public function matcher($method, $route, $callable)
     {
         $method = strtolower($method);
 
