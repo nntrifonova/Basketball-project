@@ -8,8 +8,15 @@ Class Routes {
     public $router;
     public $mainPageController;
 
-    public $routes= ['uri' => ['/main', '/main(int:id)'], 'className' => 'mainPageController',
-        'methodType' => ['GET','POST', 'DELETE', 'PUT'], 'methodName' => ['getAll', 'create', 'getById', 'delete', 'update']];
+
+    //кажется так
+    public $routes= ['uri' => ['/main' => ['className' => ['mainPageController' => ['methodType' => ['GET','POST', 'DELETE', 'PUT']]]]],
+        '/main(int:id)' => ['className' => ['mainPageController'=> ['methodType' => ['GET','POST', 'DELETE', 'PUT']]]]];
+
+
+//    public $routes_= ['uri' => ['/main', '/main(int:id)'], 'className' => 'mainPageController',
+//        'methodType' => ['GET','POST', 'DELETE', 'PUT'], 'methodName' => ['getAll', 'create', 'getById', 'delete', 'update']];
+
 
     public function __construct()
     {
@@ -24,33 +31,13 @@ Class Routes {
             return $this->router.matcher($method, );
 
         }
-        switch ($i) {
-            case 0:
-                switch ($i) {
-                    case 0:
-                        echo $this->mainPageController->getAll();
-                        break;
-                    case 1:
-                        echo $this->mainPageController->create();
-                        break;
-                }
-                break;
-            case 1:
-                switch ($i) {
-                    case 0:
-                        echo $this->mainPageController->getById($id);
-                        break;
-                    case 1:
-                        echo $this->mainPageController->delete($id);
-                        break;
-                    case 2:
-                        echo $this->mainPageController->update($id);
-                        break;
-                }
-                break;
-        }
 
     }
+     public function matchingArgs($router){
+         foreach ($this->routes as $key => $value) {
+             $router->matcher($this->routes[$key], ...); //TODO
+
+     }
 
 
 }
