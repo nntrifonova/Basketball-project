@@ -6,7 +6,7 @@ spl_autoload_register(function ($className) {
         'App\Models\Main page',
         'Core',
         'Database',
-        'Routes',
+        'routes'
     ];
     $projectDir = __DIR__ . '\\';
     $prefix = 'Server\\';

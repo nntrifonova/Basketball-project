@@ -14,4 +14,6 @@ define('BASE_DIR', str_replace('/public', '', __DIR__));
 
 //var_dump($autoload);
 // Start App
+
+
 require_once '../bootstrap/app.php';
