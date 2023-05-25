@@ -22,3 +22,6 @@ CREATE TABLE my_database.posts_tags (
     PRIMARY KEY (post_tag_id),
     FOREIGN KEY (tag_id) REFERENCES  tags(tag_id),
     FOREIGN KEY (post_id) REFERENCES  posts(post_id));
+
+INSERT INTO my_database.posts (post_id, title, text, image, date)
+VALUES (1, 'New post', 'Today You can find here a new post', null, null);
