@@ -29,10 +29,10 @@ class MainPageController extends Controller
 //        return $this->response(200, [], ['title' => 'User successfully created.']);
 //    }
 //
-//    public function update($userId)
-//    {
-//        $user = $this->model->update($this->request->parameters(), $userId);
-//
-//        return $this->response(200, [], ['title' => 'User successfully updated.']);
-//    }
+    public function update($userId)
+    {
+        $user = $this->model->update($this->request->parameters(), $userId);
+
+        return $this->response(200, [], ['title' => 'User successfully updated.']);
+    }
 }

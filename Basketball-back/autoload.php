@@ -14,7 +14,6 @@ spl_autoload_register(function ($className) {
     $cleanClassName = substr($className, $prefixLength);
     foreach ($directories as $classDir) {
         $file = $projectDir . $classDir . '\\' . $cleanClassName . '.php';
-        var_dump($file);
         $file = str_replace('\\', DIRECTORY_SEPARATOR, $file);
         if (file_exists($file)) {
             include $file;

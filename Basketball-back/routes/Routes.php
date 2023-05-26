@@ -1,6 +1,7 @@
 <?php
 namespace Server;
 
+use ReflectionClass;
 use Server\MainPageController;
 use Server\Router;
 
@@ -8,36 +9,28 @@ Class Routes {
 
     public $router;
 
-
-    //кажется так
-    public $routes= ['uri' => ['/main' => ['className' => 'mainPageController' ,
+    public $routes= ['uri' => ['/admin/main' => ['className' => '\\Server\\MainPageController',
                                            'methodType' => ['GET','POST'],
                                            'methodName' => 'getAll'],
-                               '/main(int:id)' => ['classNames' => 'mainPageController',
+                               '/admin/main(int:id)' => ['className' => '\\Server\\MainPageController',
                                                    'methodType' => ['GET', 'DELETE', 'PUT'],
-                                                   'methodName' => 'delete']]];
+                                                   'methodName' => 'update']]];
 
     public function __construct()
     {
         $this->router = new Router('../App');
     }
 
-//    public function argumentsForMatcher($routes, $router){
-//        $method = $this->router.determineHttpMethod();
-//
-//        if( in_array($method, $this->routes['methodType'])){            //Возможно это лишняя проверка
-//            return $this->router.matcher($method, );
-//
-//        }
-//
-//    }
-     public function matchingArgs()
+    /**
+     * @throws \ReflectionException
+     */
+    public function matchingArgs()
      {
-         foreach ($this->routes['url'] as $uri=>$route) {
-             $class = new ReflectionClass($route['classNames']);
-             $this->router->matcher($route['methodType'], $uri, $class);
-                 $method = $class->getMethod(str($route['methodName']));
-                 echo $method;
+         foreach ($this->routes['uri'] as $uri=> $route) {
+
+             $class = new ReflectionClass($this->routes['uri'][$uri]['className']);
+             $method = $class->getMethod($route['methodName']);
+             $this->router->matcher($route['methodType'][0], $uri, $class, $method);
          }
      }
 

@@ -21,7 +21,6 @@ RUN echo "xdebug.log=/var/log/xdebug" >>     /etc/php/8.1/apache2/conf.d/20-xdeb
 RUN echo "xdebug.idekey=PHPSTORM" >>         /etc/php/8.1/apache2/conf.d/20-xdebug.ini
 RUN echo "xdebug.client_host = 172.18.0.1">> /etc/php/8.1/apache2/conf.d/20-xdebug.ini
 
-RUN docker-php-ext-install mysql mysqli pdo pdo_mysql
 
 COPY ./configs/back/apache.conf /etc/apache2/sites-available/
 

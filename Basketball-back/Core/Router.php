@@ -31,7 +31,7 @@ class Router
         return 'get';
     }
 
-    public function matcher($method, $route, $callable)
+    public function matcher($method, $route, $callable, $func)
     {
         $method = strtolower($method);
 
@@ -45,6 +45,7 @@ class Router
 
         if (is_array($matches) && $method == $this->requestMethod) {
             call_user_func_array($callable, $matches);
+            echo $func;
         }
     }
 
