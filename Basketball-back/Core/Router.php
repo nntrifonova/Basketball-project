@@ -41,11 +41,15 @@ class Router
             $route = $this->basePath . $route;
         }
 
-        $matches = $this->matchWildCards($route);
+        $matches = $this->matchWildCards($route); //тут не то значение приходит
+
+
 
         if (is_array($matches) && $method == $this->requestMethod) {
             call_user_func_array($callable, $matches);
             echo $func;
+
+            print 2; exit;
         }
     }
 

@@ -18,7 +18,7 @@ Class Routes {
 
     public function __construct()
     {
-        $this->router = new Router('../App');
+        $this->router = new Router('');
     }
 
     /**
