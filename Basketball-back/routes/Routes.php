@@ -9,9 +9,8 @@ Class Routes {
 
     public $router;
 
-    public $routes= ['uri' => ['/admin/main' => ['className' => '\\Server\\MainPageController',
+    public $routes= ['uri' => ['/admin/main' => [MainPageController::class, 'getAll'],
                                            'methodType' => ['GET','POST'],
-                                           'methodName' => 'getAll'],
                                '/admin/main(int:id)' => ['className' => '\\Server\\MainPageController',
                                                    'methodType' => ['GET', 'DELETE', 'PUT'],
                                                    'methodName' => 'update']]];
@@ -28,8 +27,8 @@ Class Routes {
      {
          foreach ($this->routes['uri'] as $uri=> $route) {
 
-             $class = new ReflectionClass($this->routes['uri'][$uri]['className']);
-             $method = $class->getMethod($route['methodName']);
+             $class = $this->routes['uri'][$uri]['className'];
+             $method = $route['methodName'];
              $this->router->matcher($route['methodType'][0], $uri, $class, $method);
          }
      }

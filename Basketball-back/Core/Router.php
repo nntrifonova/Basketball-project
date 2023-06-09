@@ -34,24 +34,30 @@ class Router
     public function matcher($method, $route, $callable, $func)
     {
         $method = strtolower($method);
-
         if ($route == '/') {
             $route = $this->basePath;
         } else {
             $route = $this->basePath . $route;
         }
 
-        $matches = $this->matchWildCards($route); //тут не то значение приходит
+        $matches = $this->matchWildCards($route);
+
+        print($func);
 
 
+        $class_method = [$callable,'getAll'];
 
-        if (is_array($matches) && $method == $this->requestMethod) {
-            call_user_func_array($callable, $matches);
+        if ($method == $this->requestMethod) {
+            call_user_func_array($class_method, $matches);
             echo $func;
 
-            print 2; exit;
         }
     }
+
+
+
+
+
 
     private function matchWildCards($route)
     {
@@ -80,6 +86,7 @@ class Router
                         }
                     }
                 }
+
 
                 return false;
             }
